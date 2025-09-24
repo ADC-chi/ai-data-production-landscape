@@ -13,7 +13,7 @@
       Perspectives.”</em>
     </h1>
     <div class="links">
-      <a href="./V2_Extractive_Patterns_and_Equitable_Pathways.pdf">📄 Read the draft paper</a>
+      <a href="./V3_Extractive_Patterns_and_Equitable_Pathways.pdf">📄 Read the draft paper</a>
       <a href="https://github.com/chifod2025/ai-data-production-landscape" target="_blank" rel="noopener">GitHub repository</a>
     </div>
   </header>
@@ -21,7 +21,7 @@
     <section id="abstract">
       <h2>Abstract</h2>
       <p>
-        Artificial intelligence depends on data production processes that transform human knowledge into computational resources. Many approaches reproduce extractive dynamics rooted in histories of appropriation and dispossession. We conduct a multivocal landscape analysis of 350 sources on the relationship between AI systems, data production, and impacts on Indigenous, underrepresented, and underserved communities worldwide. Our synthesis identifies twelve extractive patterns and eleven less-extractive alternatives across the AI development pipeline. The literature exhibits an action gap: 256 sources diagnose extractive practices or advance normative principles, yet only 94 document concrete alternative practices. We contribute (1) a conceptual shift from data collection to data production that foregrounds sociotechnical complexity and power dynamics; (2) empirical mapping of sources across pipeline stages, historical eras, and geographic contexts; (3) an interpretive synthesis methodology bridging critical theory with technical analysis; and (4) an open corpus and interactive tools to support further inquiry.
+        Artificial intelligence depends on data production processes that transform human knowledge into computational resources. Many approaches reproduce extractive dynamics rooted in histories of appropriation and dispossession. We conduct a multivocal landscape analysis of 350 sources on the relationship between AI systems, data production, and impacts on Indigenous, underrepresented, and underserved communities worldwide. Our synthesis identifies twelve extractive patterns and eleven less-extractive alternatives across the AI development pipeline. The literature exhibits an action gap: 257 sources diagnose extractive practices or advance normative principles, yet only 93 document concrete alternative practices. We contribute (1) a conceptual shift from data collection to data production that foregrounds sociotechnical complexity and power dynamics; (2) empirical mapping of sources across pipeline stages, historical eras, and geographic contexts; (3) an interpretive synthesis methodology bridging critical theory with technical analysis; and (4) an open corpus and interactive tools to support further inquiry.
       </p>
         <main class="container">
  
@@ -90,15 +90,15 @@ dimensions that inform AI data production practices.
       <div class="cards">
         <div class="card">
           <h3>Paper</h3>
-          <p><a href="./V2_Extractive_Patterns_and_Equitable_Pathways.pdf">Read the latest paper draft (PDF)</a></p>
+          <p><a href="./V3_Extractive_Patterns_and_Equitable_Pathways.pdf">Read the latest paper draft (PDF)</a></p>
         </div>
         <div class="card">
           <h3>Dataset</h3>
           <p>
             <ul>
     <li><a href="https://docs.google.com/spreadsheets/d/1NJBIsDhtqp5CrCTJtfccObCneRLaRtoun6VfPuNTims/edit?usp=sharing" target="_blank" rel="noopener">Live Google Sheet</a></li> 
-    <li><a href="https://github.com/chifod2025/ai-data-production-landscape/blob/main/data/raw/ai-data-production-landscape.xlsx">Raw Excel</a></li>
-    <li><a href="https://github.com/chifod2025/ai-data-production-landscape/blob/main/data/processed/dataset.csv">Processed CSV</a></li>
+    <li><a href="https://github.com/chifod2025/ai-data-production-landscape/blob/main/data/raw/V2-ai-data-production-landscape.xlsx">Raw Excel</a></li>
+    <li><a href="https://github.com/chifod2025/ai-data-production-landscape/blob/main/data/processed/V2-dataset.csv">Processed CSV</a></li>
     </ul>
           </p>
         </div>

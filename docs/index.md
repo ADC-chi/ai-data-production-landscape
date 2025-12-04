@@ -8,9 +8,7 @@
 <body>
   <header class="container">
    <h1>
-      Welcome to the companion repository for <em>“Extractive Patterns and Equitable Pathways:
-      A Landscape Analysis of AI Data Production Through Pipeline and Historical
-      Perspectives.”</em>
+      Welcome to the companion repository for <em>“Understanding AI Data Production & Community Impacts Worldwide: A Multivocal Literature Review”</em>
     </h1>
     <div class="links">
       <a href="./V3_Extractive_Patterns_and_Equitable_Pathways.pdf">📄 Read the draft paper</a>
@@ -28,7 +26,7 @@
       <figure>
         <img src="./assets/tri-2.png" alt="Orientation triangle diagram" />
         <figcaption>
-          Fig. 1. A/D/C analytical framework for source analysis. Sources were coded based on substantive engagement with Community
+          Fig. 1. A/D/C analytical framework for corpus creation. Sources were coded based on substantive engagement with Community
 Impacts (C), Artificial Intelligence (A), and/or Data Production (D). Arrows indicate the interconnected relationships between
 dimensions that inform AI data production practices.
         </figcaption>

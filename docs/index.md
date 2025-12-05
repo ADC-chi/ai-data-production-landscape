@@ -26,7 +26,7 @@
       <figure>
         <img src="./assets/tri-2.png" alt="Orientation triangle diagram" />
         <figcaption>
-          Fig. 1. A/D/C scoping framework for identifying relevant literature across three interrelated domains of AI (A), Data Production (D), and Community Impacts (C)..
+          Fig. 1. A/D/C scoping framework for identifying relevant literature across three interrelated domains of AI (A), Data Production (D), and Community Impacts (C).
         </figcaption>
       </figure>
           
@@ -36,12 +36,36 @@
           Fig. 2. Simplified AI development pipeline with three interwoven sine waves representing AI (purple), data production (orange), and community impacts (green) flowing continuously through all pipeline stages. Pipeline diagram derived from Martin (2020).
         </figcaption>
       </figure>
- 
-<div class="cards cards--domains domains--balanced">
-  <!-- same five <article class="card card--domain"> ... -->
-</div>
 
+ <!-- ===================== -->
+<!-- ANALYTIC DOMAINS CARDS -->
+<!-- ===================== -->
 
+<style>
+  /* Domains cards grid */
+  .cards--domains {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 0.75rem;
+  }
+
+  /* Domain card container */
+  .card--domain {
+    border: 1px solid #e6e6e6;
+    border-radius: 14px;
+    padding: 1rem 1.1rem;
+    box-shadow: 0 1px 0 rgba(16,24,40,0.04);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Title alignment */
+  .card--domain h3 {
+    margin: 0 0 0.4rem 0;
+    font-size: 1.05rem;
+    line-height: 1.2;
+    min-height:
 
     <!-- TAXONOMY -->
     <section id="taxonomy">

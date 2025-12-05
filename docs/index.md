@@ -37,59 +37,10 @@
         </figcaption>
       </figure>
  
-<!-- DOMAINS OVERVIEW (cards) -->
-<section id="domains" class="container">
-  <h2>Analytic Domains (overview)</h2>
+<div class="cards cards--domains domains--balanced">
+  <!-- same five <article class="card card--domain"> ... -->
+</div>
 
-  <div class="cards cards--domains" aria-label="Analytic domains as cards">
-    <article class="card card--domain">
-      <h3>Data Relations</h3>
-      <p class="stake">Authority over purpose, scope, consent, and access.</p>
-      <ul class="mini">
-        <li><strong>Extractive:</strong> outside agenda-setting; bundled consent.</li>
-        <li><strong>High-agency:</strong> co-authored scope; granular & revocable consent.</li>
-      </ul>
-    </article>
-
-    <article class="card card--domain">
-      <h3>Data Labor</h3>
-      <p class="stake">Who does the work; who is credited, paid, and protected.</p>
-      <ul class="mini">
-        <li><strong>Extractive:</strong> invisible, piece-work; no share of value.</li>
-        <li><strong>High-agency:</strong> attributed labor; context pay; value-sharing.</li>
-      </ul>
-    </article>
-
-    <article class="card card--domain">
-      <h3>Data Representation</h3>
-      <p class="stake">Which ontologies and labels make communities legible—or erase context.</p>
-      <ul class="mini">
-        <li><strong>Extractive:</strong> external taxonomies; category erasure.</li>
-        <li><strong>High-agency:</strong> community ontologies; context-preserving schemas; refusal.</li>
-      </ul>
-    </article>
-
-    <article class="card card--domain">
-      <h3>Data Infrastructure</h3>
-      <p class="stake">Where data lives and flows; provenance and control.</p>
-      <ul class="mini">
-        <li><strong>Extractive:</strong> centralized silos; opaque lineage; one-way flows.</li>
-        <li><strong>High-agency:</strong> provenance-first storage; tiered access; federated spaces.</li>
-      </ul>
-    </article>
-
-    <article class="card card--domain">
-      <h3>Data Governance</h3>
-      <p class="stake">Rights, licensing, oversight, redress—and enforceable refusal.</p>
-      <ul class="mini">
-        <li><strong>Extractive:</strong> rights-washing; non-consensual reuse; weak redress.</li>
-        <li><strong>High-agency:</strong> community licenses; sovereign oversight; enforceable refusal.</li>
-      </ul>
-    </article>
-  </div>
-
-  <p class="domains-note">See the <a href="#taxonomy">taxonomy</a> and datasheet for detailed mappings.</p>
-</section>
 
 
     <!-- TAXONOMY -->

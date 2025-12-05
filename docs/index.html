@@ -4,7 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Data Production Landscape</title>
+  
+  <!-- Mermaid for the Diagram -->
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+  </script>
+
   <style>
+    /* --- GLOBAL STYLES --- */
     * {
       margin: 0;
       padding: 0;
@@ -14,60 +22,76 @@
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       line-height: 1.6;
-      color: #000;
+      color: #2c3e50;
       padding: 2rem;
-      max-width: 1400px;
+      max-width: 1200px; /* Slightly tighter for better readability */
       margin: 0 auto;
+      background-color: #fcfcfc;
     }
     
-    header {
-      margin-bottom: 3rem;
-    }
-    
+    /* --- TYPOGRAPHY --- */
     h1 {
       font-size: 2rem;
       margin-bottom: 1rem;
-      font-weight: 600;
+      font-weight: 700;
+      color: #1a1a1a;
     }
     
     h1 em {
       font-style: italic;
       font-weight: 400;
+      color: #555;
     }
-    
-    .links {
-      margin-top: 1rem;
-    }
-    
-    .links a {
-      display: inline-block;
-      margin-right: 1.5rem;
-      color: #0969da;
-      text-decoration: none;
-    }
-    
-    .links a:hover {
-      text-decoration: underline;
-    }
-    
-    section {
-      margin-bottom: 3rem;
-    }
-    
+
     h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
       font-weight: 600;
+      border-bottom: 2px solid #eaeaea;
+      padding-bottom: 0.5rem;
+      color: #2c3e50;
     }
     
     h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
       font-weight: 600;
     }
     
     p {
       margin-bottom: 1rem;
+    }
+
+    a {
+      color: #0969da;
+      text-decoration: none;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* --- LAYOUT COMPONENTS --- */
+    header {
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+    
+    .links {
+      margin-top: 1.5rem;
+    }
+    
+    .links a {
+      display: inline-block;
+      margin: 0 1rem;
+      padding: 0.5rem 1rem;
+      background: #f0f6fc;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+
+    section {
+      margin-bottom: 4rem;
     }
     
     figure {
@@ -78,169 +102,170 @@
     figure img {
       max-width: 100%;
       height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     }
     
     figcaption {
-      margin-top: 0.5rem;
+      margin-top: 0.8rem;
       font-size: 0.9rem;
       color: #666;
       font-style: italic;
     }
+
+    /* --- ABSTRACT BOX --- */
+    .abstract-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
     
-    /* Domain Cards */
-    .cards--domains {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 1rem;
+    .contributions-box {
+      background: #f1f8ff;
+      border-left: 5px solid #0969da;
+      padding: 1.5rem;
+      border-radius: 0 8px 8px 0;
       margin-top: 1.5rem;
     }
-    
-    .card--domain {
-      border: 1px solid #e6e6e6;
-      border-radius: 14px;
-      padding: 1rem 1.1rem;
-      box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
-      background: #fff;
-    }
-    
-    .card--domain h3 {
-      margin: 0 0 0.4rem 0;
-      font-size: 1.05rem;
-      line-height: 1.2;
-      min-height: 2.4em;
-      display: flex;
-      align-items: center;
-      color: #000;
-    }
-    
-    .card--domain .stake {
-      margin: 0 0 0.6rem 0;
-      font-size: 0.95rem;
-      color: #000;
-      line-height: 1.25;
-      min-height: calc(3 * 1.25em);
-    }
-    
-    .card--domain .mini {
-      margin: 0;
-      padding-left: 1.1rem;
-      font-size: 0.88rem;
-      color: #000;
-      list-style-position: outside;
-    }
-    
-    .card--domain .mini li + li {
-      margin-top: 0.25rem;
-    }
-    
-    /* Taxonomy Cards */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-    
-    .card {
-      border: 1px solid #e6e6e6;
+
+    /* --- DOMAINS TABLE (New) --- */
+    .table-wrapper {
+      overflow-x: auto;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
       border-radius: 8px;
-      padding: 1.5rem;
+    }
+
+    table.domain-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      min-width: 600px;
+    }
+
+    table.domain-table th {
+      background: #2c3e50;
+      color: white;
+      text-align: left;
+      padding: 1rem;
+    }
+
+    table.domain-table td {
+      padding: 1rem;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+    }
+
+    table.domain-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .text-red { color: #c0392b; }
+    .text-green { color: #27ae60; }
+    .font-bold { font-weight: 600; }
+
+    /* --- TAXONOMY GRID --- */
+    .taxonomy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .tax-card {
+      padding: 2rem;
+      border-radius: 12px;
       background: #fff;
     }
-    
-    .card h3 {
-      margin-bottom: 1rem;
+
+    .tax-card.extractive {
+      background: #fff5f5;
+      border: 1px solid #feb2b2;
+      border-left: 6px solid #c0392b;
+    }
+
+    .tax-card.agency {
+      background: #f0f9f4;
+      border: 1px solid #9ae6b4;
+      border-left: 6px solid #27ae60;
+    }
+
+    .tax-card ul, .tax-card ol {
+      padding-left: 1.2rem;
     }
     
-    .card ol {
-      padding-left: 1.5rem;
-    }
-    
-    .card ol li {
+    .tax-card li {
       margin-bottom: 0.5rem;
     }
-    
-    .card ul {
-      list-style: none;
-      padding-left: 0;
+
+    /* --- RESOURCES GRID --- */
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
     }
-    
-    .card ul li {
-      margin-bottom: 0.5rem;
+
+    .resource-card {
+      background: white;
+      border: 1px solid #e1e4e8;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
-    
-    .card a {
-      color: #0969da;
-      text-decoration: none;
-    }
-    
-    .card a:hover {
-      text-decoration: underline;
-    }
-    
-    /* Responsive */
-    @media (max-width: 1200px) {
-      .cards--domains {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-    
-    @media (max-width: 800px) {
-      .cards--domains {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      .cards {
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .taxonomy-grid {
         grid-template-columns: 1fr;
       }
-    }
-    
-    @media (max-width: 560px) {
-      .cards--domains {
-        grid-template-columns: 1fr;
+      body {
+        padding: 1rem;
       }
     }
   </style>
 </head>
-
-  <script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true });
-</script>
   
 <body>
   <header>
     <h1>
-      Welcome to the companion repository for the CHI 2026 submission 
-      <em>"Understanding AI Data Production &amp; Community Impacts Worldwide: A Multivocal Literature Review"</em>
+      Understanding AI Data Production &amp; Community Impacts Worldwide
     </h1>
+    <p style="font-size: 1.1rem; color: #666; margin-top: 0.5rem;">
+      Companion repository for the CHI 2026 submission: <em>A Multivocal Literature Review</em>
+    </p>
     <div class="links">
-      <a href="./REVISION_ADC_MultivocalV2.pdf">📄 Read the draft paper</a>
-      <a href="https://github.com/chifod2025/ai-data-production-landscape">GitHub repository</a>
+      <a href="./REVISION_ADC_MultivocalV2.pdf">📄 Read the Draft Paper (PDF)</a>
+      <a href="https://github.com/chifod2025/ai-data-production-landscape">View on GitHub</a>
     </div>
   </header>
 
+  <!-- ABSTRACT SECTION -->
   <section id="abstract">
-    <h2>Abstract</h2>
-    <p>
-      Artificial intelligence (AI) depends on data production: the sociotechnical process that transforms human
-      knowledge into computational resources. The connections among AI systems, data practices, and impacts on
-      Indigenous, underrepresented, and underserved communities—though critical—have not been systematically examined.
-      To this end, we conduct a Multivocal Literature Review (MLR) integrating 350 academic and grey-literature sources
-      to analyze how AI systems, data practices, and community impacts intersect. Across five analytic domains—Data
-      Relations, Data Labor, Data Representation, Data Infrastructure, and Data Governance—we distinguish extractive
-      data production mechanisms that centralize control from high-agency pathways in which communities exercise
-      authority. We contribute (1) a multivocal review that positions data production as a site of sociotechnical power
-      rather than a technical prerequisite; (2) implications for HCI research including upstream infrastructure as a
-      design site, provenance-first architectures, and federated data governance supporting community sovereignty; (3)
-      methodological validation of multivocal synthesis for bridging academic critique with community practice; and (4)
-      an open corpus mapping sources across pipeline stages, historical eras, and geographic contexts.
-    </p>
+    <div class="abstract-container">
+      <h2>Abstract</h2>
+      <p>
+        Artificial intelligence (AI) depends on data production: the sociotechnical process that transforms human
+        knowledge into computational resources. The connections among AI systems, data practices, and impacts on
+        Indigenous, underrepresented, and underserved communities—though critical—have not been systematically examined.
+      </p>
+      <p>
+        To this end, we conduct a Multivocal Literature Review (MLR) integrating <b>350 academic and grey-literature sources</b>. 
+        Across five analytic domains, we distinguish extractive data production mechanisms that centralize control from high-agency pathways in which communities exercise authority.
+      </p>
+      
+      <div class="contributions-box">
+        <h3>Key Contributions</h3>
+        <ol style="padding-left: 1.5rem;">
+          <li><b>Reframing Data Production:</b> Positioning it as a site of sociotechnical power rather than a technical prerequisite.</li>
+          <li><b>Design Implications:</b> Proposing upstream infrastructure, provenance-first architectures, and federated governance.</li>
+          <li><b>Methodological Validation:</b> Demonstrating multivocal synthesis to bridge academic critique with community practice.</li>
+          <li><b>Open Corpus:</b> A mapped database of sources across pipeline stages, historical eras, and geographic contexts.</li>
+        </ol>
+      </div>
+    </div>
   </section>
 
+  <!-- DIAGRAMS SECTION -->
   <section>
     <figure>
-      <img src="./assets/tri-2.png" alt="A/D/C analytical framework">
+      <img src="./assets/tri-2.png" alt="A/D/C analytical framework" style="max-width: 800px;">
       <figcaption>
         Fig. 1. A/D/C scoping framework for identifying relevant literature across three interrelated domains of AI (A),
         Data Production (D), and Community Impacts (C).
@@ -248,132 +273,129 @@
     </figure>
 
     <!-- MERMAID DIAGRAM SECTION -->
-<div style="margin-top: 40px; padding: 20px; background: #fff; border: 1px solid #eee; border-radius: 8px;">
-    <h2 style="border-left: 5px solid #2980b9; padding-left: 15px; color: #2c3e50;">Methodology: Search & Selection Process</h2>
-    <p>The following diagram illustrates our attrition flow, using the ACM Digital Library as a representative example alongside our complementary grey literature strategies.</p>
+    <div style="margin-top: 60px; margin-bottom: 60px; padding: 30px; background: #fff; border: 1px solid #eee; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+        <h2 style="border-bottom: none; border-left: 5px solid #2980b9; padding-left: 15px; color: #2c3e50; margin-bottom: 1rem;">Methodology: Search & Selection Process</h2>
+        <p>The following diagram illustrates our attrition flow, using the ACM Digital Library as a representative example alongside our complementary grey literature strategies.</p>
 
-    <div class="mermaid">
-    flowchart TD
-        %% Styles
-        classDef prep fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000;
-        classDef acm fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000;
-        classDef grey fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#000;
-        classDef final fill:#e8f5e9,stroke:#2e7d32,stroke-width:3px,color:#000;
+        <div class="mermaid">
+        flowchart TD
+            %% Styles
+            classDef prep fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000;
+            classDef acm fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000;
+            classDef grey fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#000;
+            classDef final fill:#e8f5e9,stroke:#2e7d32,stroke-width:3px,color:#000;
 
-        %% --- PHASE 0: PREPARATION ---
-        subgraph Prep ["PHASE 0: PROTOCOL REFINEMENT (Aug-Sept 2024)"]
-            direction TB
-            P1["<b>A/D/C Framework Dev</b><br/>& Keyword Strategy"]:::prep
-            P2["<b>Pilot Searches</b><br/>Tested against known<br/>seminal papers"]:::prep
-            P1 --> P2
-        end
+            %% --- PHASE 0: PREPARATION ---
+            subgraph Prep ["PHASE 0: PROTOCOL REFINEMENT (Aug-Sept 2024)"]
+                direction TB
+                P1["<b>A/D/C Framework Dev</b><br/>& Keyword Strategy"]:::prep
+                P2["<b>Pilot Searches</b><br/>Tested against known<br/>seminal papers"]:::prep
+                P1 --> P2
+            end
 
-        %% --- COLUMN 1: ACM REPRESENTATIVE ---
-        subgraph ACMFlow ["PHASE 1: REPRESENTATIVE SEARCH (ACM)"]
-            direction TB
-            A1[("<b>ACM Digital Library</b><br/>(Primary Query Sets)")]:::acm
-            A2["<b>Identification</b><br/>Hits: 1,914"]:::acm
-            A3["<b>Screening</b><br/>(Title/Abstract)<br/>Screened: 1,201"]:::acm
-            A4["<b>Eligibility</b><br/>(Full Text A/D/C)<br/>Met Criteria: 153"]:::acm
-            A5["<b>Included</b><br/>Unique Sources: 48"]:::acm
+            %% --- COLUMN 1: ACM REPRESENTATIVE ---
+            subgraph ACMFlow ["PHASE 1: REPRESENTATIVE SEARCH (ACM)"]
+                direction TB
+                A1[("<b>ACM Digital Library</b><br/>(Primary Query Sets)")]:::acm
+                A2["<b>Identification</b><br/>Hits: 1,914"]:::acm
+                A3["<b>Screening</b><br/>(Title/Abstract)<br/>Screened: 1,201"]:::acm
+                A4["<b>Eligibility</b><br/>(Full Text A/D/C)<br/>Met Criteria: 153"]:::acm
+                A5["<b>Included</b><br/>Unique Sources: 48"]:::acm
+                
+                A1 --> A2 --> A3 --> A4 --> A5
+            end
+
+            %% --- COLUMN 2: OTHER STREAMS ---
+            subgraph OtherStreams ["PHASE 2: EXPANDED SEARCH & FILTER"]
+                direction TB
+                B1[("<b>Other Academic DBs</b><br/>IEEE, ScienceDirect, Springer,<br/>Wiley, Taylor & Francis<br/><i>(Aug 2024 - Jan 2025)</i>")]:::acm
+                
+                C1[("<b>Grey Literature</b><br/>Org Reports, Policy Docs,<br/>Google Search")]:::grey
+                
+                C2[("<b>Targeted Hand-Search</b><br/>CHI, FAccT, CSCW, JRC,<br/>Big Data & Society, AI & Soc")]:::grey
+                
+                Process["<b>Rigorous Consensus Review</b><br/>-----------------------------<br/>• Two authors lead screening<br/>• Batched presentation to full team<br/>• 2 Rounds (Aug-Sept 2024)"]:::prep
+            end
+
+            %% --- FINAL CORPUS ---
+            FinalBox["<b>FINAL CORPUS (N = 350)</b><br/>---------------------------------------<br/>📚 <b>Database Searches:</b> 174 (50%)<br/>🌐 <b>Existing Networks/Orgs:</b> 73 (21%)<br/>❄️ <b>Citation Snowballing:</b> 51 (15%)<br/>🔍 <b>Iterative Keyword Search:</b> 31 (9%)<br/>📖 <b>Hand-Searching Journals:</b> 21 (6%)"]:::final
+
+            %% CONNECTIONS
+            P2 --> A1
+            P2 --> B1
             
-            A1 --> A2 --> A3 --> A4 --> A5
-        end
-
-        %% --- COLUMN 2: OTHER STREAMS ---
-        subgraph OtherStreams ["PHASE 2: EXPANDED SEARCH & FILTER"]
-            direction TB
-            B1[("<b>Other Academic DBs</b><br/>IEEE, ScienceDirect, Springer,<br/>Wiley, Taylor & Francis<br/><i>(Aug 2024 - Jan 2025)</i>")]:::acm
-            
-            C1[("<b>Grey Literature</b><br/>Org Reports, Policy Docs,<br/>Google Search")]:::grey
-            
-            C2[("<b>Targeted Hand-Search</b><br/>CHI, FAccT, CSCW, JRC,<br/>Big Data & Society, AI & Soc")]:::grey
-            
-            Process["<b>Rigorous Consensus Review</b><br/>-----------------------------<br/>• Two authors lead screening<br/>• Batched presentation to full team<br/>• 2 Rounds (Aug-Sept 2024)"]:::prep
-        end
-
-        %% --- FINAL CORPUS ---
-        FinalBox["<b>FINAL CORPUS (N = 350)</b><br/>---------------------------------------<br/>📚 <b>Database Searches:</b> 174 (50%)<br/>🌐 <b>Existing Networks/Orgs:</b> 73 (21%)<br/>❄️ <b>Citation Snowballing:</b> 51 (15%)<br/>🔍 <b>Iterative Keyword Search:</b> 31 (9%)<br/>📖 <b>Hand-Searching Journals:</b> 21 (6%)"]:::final
-
-        %% CONNECTIONS
-        P2 --> A1
-        P2 --> B1
-        
-        A5 --> FinalBox
-        B1 --> Process
-        C1 --> Process
-        C2 --> Process
-        Process --> FinalBox
+            A5 --> FinalBox
+            B1 --> Process
+            C1 --> Process
+            C2 --> Process
+            Process --> FinalBox
+        </div>
     </div>
-</div>
 
     <figure>
-      <img src="./assets/pipe-1.png" alt="AI development pipeline">
+      <img src="./assets/pipe-1.png" alt="AI development pipeline" style="max-width: 900px;">
       <figcaption>
         Fig. 2. Simplified AI development pipeline with three interwoven sine waves representing AI (purple), data
-        production (orange), and community impacts (green) flowing continuously through all pipeline stages. Pipeline
-        diagram derived from Martin (2020).
+        production (orange), and community impacts (green). Derived from Martin (2020).
       </figcaption>
     </figure>
   </section>
 
+  <!-- ANALYTIC DOMAINS (TABLE FORMAT) -->
   <section id="domains">
-    <h2>Analytic Domains (overview)</h2>
-    <div class="cards--domains">
-      <article class="card--domain">
-        <h3>Data Relations</h3>
-        <p class="stake">Authority over purpose, scope, consent, and access.</p>
-        <ul class="mini">
-          <li><strong>Extractive:</strong> outside agenda-setting; bundled consent.</li>
-          <li><strong>High-agency:</strong> co-authored scope; granular &amp; revocable consent.</li>
-        </ul>
-      </article>
-
-      <article class="card--domain">
-        <h3>Data Labor</h3>
-        <p class="stake">Who does the work; who is credited, paid, and protected.</p>
-        <ul class="mini">
-          <li><strong>Extractive:</strong> invisible work; piece-work; no share of value.</li>
-          <li><strong>High-agency:</strong> attributed labor; context pay; value-sharing.</li>
-        </ul>
-      </article>
-
-      <article class="card--domain">
-        <h3>Data Representation</h3>
-        <p class="stake">How communities become legible—or have context stripped.</p>
-        <ul class="mini">
-          <li><strong>Extractive:</strong> external taxonomies; category erasure.</li>
-          <li><strong>High-agency:</strong> community ontologies; context-preserving schemas; refusal.</li>
-        </ul>
-      </article>
-
-      <article class="card--domain">
-        <h3>Data Infrastructure</h3>
-        <p class="stake">Where data lives and flows; provenance and control.</p>
-        <ul class="mini">
-          <li><strong>Extractive:</strong> centralized silos; opaque lineage; one-way flows.</li>
-          <li><strong>High-agency:</strong> provenance-first storage; tiered access; federated spaces.</li>
-        </ul>
-      </article>
-
-      <article class="card--domain">
-        <h3>Data Governance</h3>
-        <p class="stake">Rights, oversight, redress—and enforceable refusal.</p>
-        <ul class="mini">
-          <li><strong>Extractive:</strong> rights-washing; non-consensual reuse; weak redress.</li>
-          <li><strong>High-agency:</strong> community licenses; sovereign oversight; enforceable refusal.</li>
-        </ul>
-      </article>
+    <h2>Analytic Domains: Extractive vs. High-Agency</h2>
+    <p>We distinguish between extractive mechanisms that centralize control and high-agency pathways where communities exercise authority.</p>
+    
+    <div class="table-wrapper">
+      <table class="domain-table">
+        <thead>
+          <tr>
+            <th style="width: 20%">Domain</th>
+            <th style="width: 40%">⚠️ Extractive Pattern</th>
+            <th style="width: 40%">✅ High-Agency Pathway</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="font-bold">Data Relations<br><span style="font-weight:400; font-size:0.85em; color:#666;">Authority & Consent</span></td>
+            <td class="text-red">Outside agenda-setting; bundled consent.</td>
+            <td class="text-green">Co-authored scope; granular & revocable consent.</td>
+          </tr>
+          <tr>
+            <td class="font-bold">Data Labor<br><span style="font-weight:400; font-size:0.85em; color:#666;">Work & Credit</span></td>
+            <td class="text-red">Invisible work; piece-work; no share of value.</td>
+            <td class="text-green">Attributed labor; context pay; value-sharing.</td>
+          </tr>
+          <tr>
+            <td class="font-bold">Data Representation<br><span style="font-weight:400; font-size:0.85em; color:#666;">Legibility & Context</span></td>
+            <td class="text-red">External taxonomies; category erasure.</td>
+            <td class="text-green">Community ontologies; context-preserving schemas; refusal.</td>
+          </tr>
+          <tr>
+            <td class="font-bold">Data Infrastructure<br><span style="font-weight:400; font-size:0.85em; color:#666;">Storage & Flow</span></td>
+            <td class="text-red">Centralized silos; opaque lineage; one-way flows.</td>
+            <td class="text-green">Provenance-first storage; tiered access; federated spaces.</td>
+          </tr>
+          <tr>
+            <td class="font-bold">Data Governance<br><span style="font-weight:400; font-size:0.85em; color:#666;">Rights & Redress</span></td>
+            <td class="text-red">Rights-washing; non-consensual reuse; weak redress.</td>
+            <td class="text-green">Community licenses; sovereign oversight; enforceable refusal.</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
+  <!-- TAXONOMY (SPLIT COLUMNS) -->
   <section id="taxonomy">
-    <h2>Taxonomy (illustrative, not exhaustive)</h2>
+    <h2>Taxonomy of Practices</h2>
     <p>This project synthesizes extractive patterns and less-extractive pathways identified across the literature.</p>
-    <div class="cards">
-      <div class="card">
-        <h3>Extractive Patterns</h3>
-        <ol>
+    
+    <div class="taxonomy-grid">
+      <!-- Extractive Column -->
+      <div class="tax-card extractive">
+        <h3 style="color: #c0392b;">⚠️ Extractive Patterns</h3>
+        <ul>
           <li>Excluding underrepresented groups from decision-making</li>
           <li>Collecting vast amounts of data to train AI systems</li>
           <li>Reproducing biases through synthetic data generation</li>
@@ -386,12 +408,13 @@
           <li>Ethics dumping</li>
           <li>Deploying AI systems trained without local, contextual data</li>
           <li>Western-centric research infrastructures</li>
-        </ol>
+        </ul>
       </div>
 
-      <div class="card">
-        <h3>High-Agency Pathways</h3>
-        <ol>
+      <!-- High Agency Column -->
+      <div class="tax-card agency">
+        <h3 style="color: #27ae60;">✅ High-Agency Pathways</h3>
+        <ul>
           <li>Decentering Western ontologies</li>
           <li>Taking a needs-based approach to developing AI</li>
           <li>Early co-design and participatory initiatives</li>
@@ -403,28 +426,29 @@
           <li>Developing equitable data licensing models</li>
           <li>Developing federated data spaces</li>
           <li>Participatory data ownership and governance</li>
-        </ol>
+        </ul>
       </div>
     </div>
   </section>
 
+  <!-- RESOURCES -->
   <section id="resources">
     <h2>Resources</h2>
-    <div class="cards">
-      <div class="card">
+    <div class="resources-grid">
+      <div class="resource-card">
         <h3>Paper &amp; Dataset</h3>
-        <p><a href="./REVISION_ADC_MultivocalV2.pdf">Read the latest paper draft (PDF)</a></p>
-        <p style="margin-top: 1rem; margin-bottom: 0.5rem;">Coded corpus (Excel format · CSV format · Live Google Sheet)</p>
-        <ul>
+        <p><a href="./REVISION_ADC_MultivocalV2.pdf" style="font-weight: bold;">📥 Download Paper Draft (PDF)</a></p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: #555;">Coded Corpus:</p>
+        <ul style="padding-left: 1.2rem;">
           <li><a href="https://docs.google.com/spreadsheets/d/1NJBIsDhtqp5CrCTJtfccObCneRLaRtoun6VfPuNTims/edit?usp=sharing">Live Google Sheet</a></li>
           <li><a href="https://github.com/chifod2025/ai-data-production-landscape/blob/main/REVISED%20Datasheet.csv">CSV format</a></li>
           <li><a href="https://github.com/chifod2025/ai-data-production-landscape/blob/main/REVISED%20Datasheet.xlsx">Excel format</a></li>
         </ul>
       </div>
-      <div class="card">
-        <h3>Interactive collections (open-source)</h3>
-        <p>Curated sets of publicly available sources (≤50 per collection), grouped by orientation.</p>
-        <ul>
+      <div class="resource-card">
+        <h3>Interactive Collections</h3>
+        <p style="font-size: 0.9rem; color: #555; margin-bottom: 1rem;">Curated sets of publicly available sources (≤50 per collection), grouped by orientation.</p>
+        <ul style="padding-left: 1.2rem;">
           <li><a href="https://notebooklm.google.com/notebook/a048fa59-64b2-4b13-a98e-0e739bca49d7">Extractive Patterns</a></li>
           <li><a href="https://notebooklm.google.com/notebook/f11a7a3b-dfbf-47a1-93e9-ee53683611ba">High-Agency Principles</a></li>
           <li><a href="https://notebooklm.google.com/notebook/bd97ea3f-b516-48d5-b8c6-720ca8e47bca">High-Agency Practices</a></li>
@@ -433,9 +457,9 @@
     </div>
   </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:chifod2025@gmail.com">chifod2025@gmail.com</a></p>
+  <section id="contact" style="text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #eee;">
+    <p>Contact: <a href="mailto:chifod2025@gmail.com">chifod2025@gmail.com</a></p>
   </section>
 </body>
 </html>
+

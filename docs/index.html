@@ -202,6 +202,12 @@
     }
   </style>
 </head>
+
+  <script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true });
+</script>
+  
 <body>
   <header>
     <h1>
@@ -240,6 +246,66 @@
         Data Production (D), and Community Impacts (C).
       </figcaption>
     </figure>
+
+    <!-- MERMAID DIAGRAM SECTION -->
+<div style="margin-top: 40px; padding: 20px; background: #fff; border: 1px solid #eee; border-radius: 8px;">
+    <h2 style="border-left: 5px solid #2980b9; padding-left: 15px; color: #2c3e50;">Methodology: Search & Selection Process</h2>
+    <p>The following diagram illustrates our attrition flow, using the ACM Digital Library as a representative example alongside our complementary grey literature strategies.</p>
+
+    <div class="mermaid">
+    flowchart TD
+        %% Styles
+        classDef prep fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000;
+        classDef acm fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000;
+        classDef grey fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#000;
+        classDef final fill:#e8f5e9,stroke:#2e7d32,stroke-width:3px,color:#000;
+
+        %% --- PHASE 0: PREPARATION ---
+        subgraph Prep ["PHASE 0: PROTOCOL REFINEMENT (Aug-Sept 2024)"]
+            direction TB
+            P1["<b>A/D/C Framework Dev</b><br/>& Keyword Strategy"]:::prep
+            P2["<b>Pilot Searches</b><br/>Tested against known<br/>seminal papers"]:::prep
+            P1 --> P2
+        end
+
+        %% --- COLUMN 1: ACM REPRESENTATIVE ---
+        subgraph ACMFlow ["PHASE 1: REPRESENTATIVE SEARCH (ACM)"]
+            direction TB
+            A1[("<b>ACM Digital Library</b><br/>(Primary Query Sets)")]:::acm
+            A2["<b>Identification</b><br/>Hits: 1,914"]:::acm
+            A3["<b>Screening</b><br/>(Title/Abstract)<br/>Screened: 1,201"]:::acm
+            A4["<b>Eligibility</b><br/>(Full Text A/D/C)<br/>Met Criteria: 153"]:::acm
+            A5["<b>Included</b><br/>Unique Sources: 48"]:::acm
+            
+            A1 --> A2 --> A3 --> A4 --> A5
+        end
+
+        %% --- COLUMN 2: OTHER STREAMS ---
+        subgraph OtherStreams ["PHASE 2: EXPANDED SEARCH & FILTER"]
+            direction TB
+            B1[("<b>Other Academic DBs</b><br/>IEEE, ScienceDirect, Springer,<br/>Wiley, Taylor & Francis<br/><i>(Aug 2024 - Jan 2025)</i>")]:::acm
+            
+            C1[("<b>Grey Literature</b><br/>Org Reports, Policy Docs,<br/>Google Search")]:::grey
+            
+            C2[("<b>Targeted Hand-Search</b><br/>CHI, FAccT, CSCW, JRC,<br/>Big Data & Society, AI & Soc")]:::grey
+            
+            Process["<b>Rigorous Consensus Review</b><br/>-----------------------------<br/>• Two authors lead screening<br/>• Batched presentation to full team<br/>• 2 Rounds (Aug-Sept 2024)"]:::prep
+        end
+
+        %% --- FINAL CORPUS ---
+        FinalBox["<b>FINAL CORPUS (N = 350)</b><br/>---------------------------------------<br/>📚 <b>Database Searches:</b> 174 (50%)<br/>🌐 <b>Existing Networks/Orgs:</b> 73 (21%)<br/>❄️ <b>Citation Snowballing:</b> 51 (15%)<br/>🔍 <b>Iterative Keyword Search:</b> 31 (9%)<br/>📖 <b>Hand-Searching Journals:</b> 21 (6%)"]:::final
+
+        %% CONNECTIONS
+        P2 --> A1
+        P2 --> B1
+        
+        A5 --> FinalBox
+        B1 --> Process
+        C1 --> Process
+        C2 --> Process
+        Process --> FinalBox
+    </div>
+</div>
 
     <figure>
       <img src="./assets/pipe-1.png" alt="AI development pipeline">

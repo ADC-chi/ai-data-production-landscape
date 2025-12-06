@@ -24,7 +24,7 @@
       line-height: 1.6;
       color: #2c3e50;
       padding: 2rem;
-      max-width: 1200px; /* Slightly tighter for better readability */
+      max-width: 1200px;
       margin: 0 auto;
       background-color: #fcfcfc;
     }
@@ -94,23 +94,32 @@
       margin-bottom: 4rem;
     }
     
+    /* --- RESPONSIVE IMAGES (UPDATED) --- */
     figure {
       margin: 2rem 0;
+      width: 100%;
       text-align: center;
     }
     
     figure img {
-      max-width: 100%;
-      height: auto;
+      display: block;       /* Allows margin auto to work */
+      margin: 0 auto;       /* Centers the image */
+      width: 100%;          /* Forces image to take full available width... */
+      height: auto;         /* ...while maintaining aspect ratio */
       border-radius: 8px;
       box-shadow: 0 4px 6px rgba(0,0,0,0.05);
     }
+
+    /* Specific max-widths for desktop so they don't get too huge */
+    .img-triangle { max-width: 800px; }
+    .img-pipeline { max-width: 900px; }
     
     figcaption {
       margin-top: 0.8rem;
       font-size: 0.9rem;
       color: #666;
       font-style: italic;
+      padding: 0 10px; /* Prevents caption from hitting edge on mobile */
     }
 
     /* --- ABSTRACT BOX --- */
@@ -127,18 +136,19 @@
       margin-top: 1.5rem;
     }
 
-    /* --- DOMAINS TABLE (New) --- */
+    /* --- DOMAINS TABLE --- */
     .table-wrapper {
       overflow-x: auto;
       box-shadow: 0 4px 6px rgba(0,0,0,0.05);
       border-radius: 8px;
+      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
     }
 
     table.domain-table {
       width: 100%;
       border-collapse: collapse;
       background: white;
-      min-width: 600px;
+      min-width: 600px; /* Ensures table doesn't squish too much */
     }
 
     table.domain-table th {
@@ -210,13 +220,29 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
 
-    /* --- RESPONSIVE --- */
+    /* --- RESPONSIVE TWEAKS --- */
     @media (max-width: 768px) {
+      body {
+        padding: 1.2rem;
+      }
+      
+      h1 {
+        font-size: 1.6rem;
+      }
+
       .taxonomy-grid {
         grid-template-columns: 1fr;
       }
-      body {
-        padding: 1rem;
+      
+      .links a {
+        display: block;
+        margin: 0.5rem 0;
+        text-align: center;
+      }
+      
+      /* Mermaid container padding reduction for mobile */
+      .mermaid-container {
+        padding: 15px !important;
       }
     }
   </style>
@@ -265,7 +291,8 @@
   <!-- DIAGRAMS SECTION -->
   <section>
     <figure>
-      <img src="./assets/tri-2.png" alt="A/D/C analytical framework" style="max-width: 800px;">
+      <!-- Added class 'img-triangle' for specific sizing -->
+      <img src="./assets/tri-2.png" alt="A/D/C analytical framework" class="img-triangle">
       <figcaption>
         Fig. 1. A/D/C scoping framework for identifying relevant literature across three interrelated domains of AI (A),
         Data Production (D), and Community Impacts (C).
@@ -273,7 +300,7 @@
     </figure>
 
     <!-- MERMAID DIAGRAM SECTION -->
-    <div style="margin-top: 60px; margin-bottom: 60px; padding: 30px; background: #fff; border: 1px solid #eee; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+    <div class="mermaid-container" style="margin-top: 60px; margin-bottom: 60px; padding: 30px; background: #fff; border: 1px solid #eee; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
         <h2 style="border-bottom: none; border-left: 5px solid #2980b9; padding-left: 15px; color: #2c3e50; margin-bottom: 1rem;">Methodology: Search & Selection Process</h2>
         <p>The following diagram illustrates our attrition flow, using the ACM Digital Library as a representative example alongside our complementary grey literature strategies.</p>
 
@@ -333,7 +360,8 @@
     </div>
 
     <figure>
-      <img src="./assets/pipe-1.png" alt="AI development pipeline" style="max-width: 900px;">
+      <!-- Added class 'img-pipeline' for specific sizing -->
+      <img src="./assets/pipe-1.png" alt="AI development pipeline" class="img-pipeline">
       <figcaption>
         Fig. 2. Simplified AI development pipeline with three interwoven sine waves representing AI (purple), data
         production (orange), and community impacts (green). Derived from Martin (2020).
@@ -462,4 +490,5 @@
   </section>
 </body>
 </html>
+
 

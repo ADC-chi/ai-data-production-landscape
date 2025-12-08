@@ -252,10 +252,10 @@
       Understanding AI Data Production &amp; Community Impacts Worldwide
     </h1>
     <p style="font-size: 1.1rem; color: #666; margin-top: 0.5rem;">
-      Companion repository for the CHI 2026 submission: <em>A Multivocal Literature Review</em>
+      Companion repository for the CHI 2026 submission of a <em> Multivocal Literature Review</em>
     </p>
     <div class="links">
-      <a href="./REVISION_ADC_MultivocalV2.pdf">📄 Read the Draft Paper (PDF)</a>
+      <a href="./REVISION_ADC_MultivocalV3.pdf">📄 Read the Draft Paper (PDF)</a>
       <a href="https://github.com/chifod2025/ai-data-production-landscape">View on GitHub</a>
     </div>
   </header>
@@ -270,7 +270,7 @@
         Indigenous, underrepresented, and underserved communities—though critical—have not been systematically examined.
       </p>
       <p>
-        To this end, we conduct a Multivocal Literature Review (MLR) integrating <b>350 academic and grey-literature sources</b>. 
+        In response, we conduct a Multivocal Literature Review (MLR) integrating <b>350 academic and grey-literature sources</b>. 
         Across five analytic domains, we distinguish extractive data production mechanisms that centralize control from high-agency pathways in which communities exercise authority.
       </p>
       
@@ -309,8 +309,9 @@
             classDef acm fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#000;
             classDef grey fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#000;
             classDef final fill:#e8f5e9,stroke:#2e7d32,stroke-width:3px,color:#000;
+            classDef titleNode fill:none,stroke:none,font-weight:bold,font-size:16px,color:#000;
 
-            %% --- PHASE 0: PREPARATION ---
+            %% --- PHASE 0 ---
             subgraph Prep ["PHASE 0: PROTOCOL REFINEMENT (Aug-Sept 2024)<br/>&nbsp;"]
                 direction TB
                 P1["<b>A/D/C Framework Dev</b><br/>& Keyword Strategy"]:::prep
@@ -318,35 +319,40 @@
                 P1 --> P2
             end
 
-            %% --- COLUMN 1: ACM REPRESENTATIVE ---
-            subgraph ACMFlow ["PHASE 1: REPRESENTATIVE SEARCH (ACM)<br/>&nbsp;"]
+            %% --- PHASE 1 ---
+            %% Title is now a node (Title1) to prevent arrow overlap
+            subgraph ACMFlow [" "]
                 direction TB
+                Title1["PHASE 1: REPRESENTATIVE SEARCH (ACM)"]:::titleNode
+                
                 A1[("<b>ACM Digital Library</b><br/>(Primary Query Sets)")]:::acm
                 A2["<b>Identification</b><br/>Hits: 1,914"]:::acm
                 A3["<b>Screening</b><br/>(Title/Abstract)<br/>Screened: 1,201"]:::acm
                 A4["<b>Eligibility</b><br/>(Full Text A/D/C)<br/>Met Criteria: 153"]:::acm
                 A5["<b>Included</b><br/>Unique Sources: 48"]:::acm
                 
+                Title1 --> A1
                 A1 --> A2 --> A3 --> A4 --> A5
             end
 
-            %% --- COLUMN 2: OTHER STREAMS ---
-            subgraph OtherStreams ["PHASE 2: EXPANDED SEARCH & FILTER<br/>&nbsp;"]
+            %% --- PHASE 2 ---
+            subgraph OtherStreams ["PHASE 2: EXPANDED SEARCH (Aug 2024 - Jan 2025)<br/>&nbsp;"]
                 direction TB
-                B1[("<b>Other Academic DBs</b><br/>IEEE, ScienceDirect, Springer,<br/>Wiley, Taylor & Francis<br/><i>(Aug 2024 - Jan 2025)</i>")]:::acm
+                B1[("<b>Other Academic DBs</b><br/>IEEE, ScienceDirect, Springer,<br/>Wiley, Taylor & Francis")]:::acm
                 
                 C1[("<b>Grey Literature</b><br/>Org Reports, Policy Docs,<br/>Google Search")]:::grey
                 
                 C2[("<b>Targeted Hand-Search</b><br/>CHI, FAccT, CSCW, JRC,<br/>Big Data & Society, AI & Soc")]:::grey
                 
-                Process["<b>Rigorous Consensus Review</b><br/>-----------------------------<br/>• Two authors lead screening<br/>• Batched presentation to full team<br/>• 2 Rounds (Aug-Sept 2024)"]:::prep
+                Process["<b>Rigorous Consensus Review</b><br/>-----------------------------<br/>• Two authors lead screening<br/>• Batched presentation to full team<br/>• 2 Rounds (Aug-Sept 2024)<br/>• Team iteration through Jan 2025"]:::prep
             end
 
             %% --- FINAL CORPUS ---
-            FinalBox["<b>FINAL CORPUS (N = 350)</b><br/>---------------------------------------<br/>📚 <b>Database Searches:</b> 174 (50%)<br/>🌐 <b>Existing Networks/Orgs:</b> 73 (21%)<br/>❄️ <b>Citation Snowballing:</b> 51 (15%)<br/>🔍 <b>Iterative Keyword Search:</b> 31 (9%)<br/>📖 <b>Hand-Searching Journals:</b> 21 (6%)"]:::final
+            %% Added div with text-align:left
+            FinalBox["<div style='text-align:left'><b>FINAL CORPUS (N = 350)</b><br/>---------------------------------------<br/>📚 <b>Database Searches:</b> 174 (50%)<br/>🌐 <b>Existing Networks/Orgs:</b> 73 (21%)<br/>❄️ <b>Citation Snowballing:</b> 51 (15%)<br/>🔍 <b>Iterative Keyword Search:</b> 31 (9%)<br/>📖 <b>Hand-Searching Journals:</b> 21 (6%)</div>"]:::final
 
-            %% CONNECTIONS
-            P2 --> A1
+            %% --- CONNECTIONS ---
+            P2 --> Title1
             P2 --> B1
             
             A5 --> FinalBox
@@ -414,7 +420,7 @@
   <!-- TAXONOMY (SPLIT COLUMNS) -->
   <section id="taxonomy">
     <h2>Taxonomy of Practices</h2>
-    <p>This project synthesizes extractive patterns and less-extractive pathways identified across the literature.</p>
+    <p>We identified a set of (non-exhaustive) extractive patterns and less-extractive pathways across the literature.</p>
     
     <div class="taxonomy-grid">
       <!-- Extractive Column -->
@@ -462,7 +468,7 @@
     <div class="resources-grid">
       <div class="resource-card">
         <h3>Paper &amp; Dataset</h3>
-        <p><a href="./REVISION_ADC_MultivocalV2.pdf" style="font-weight: bold;">📥 Download Paper Draft (PDF)</a></p>
+        <p><a href="./REVISION_ADC_MultivocalV3.pdf" style="font-weight: bold;">📥 Download Paper Draft (PDF)</a></p>
         <p style="margin-top: 1rem; font-size: 0.9rem; color: #555;">Coded Corpus:</p>
         <ul style="padding-left: 1.2rem;">
           <li><a href="https://docs.google.com/spreadsheets/d/1NJBIsDhtqp5CrCTJtfccObCneRLaRtoun6VfPuNTims/edit?usp=sharing">Live Google Sheet</a></li>
@@ -487,3 +493,4 @@
   </section>
 </body>
 </html>
+
